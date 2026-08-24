@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo Installing source dependencies...
+      - npm ci
+  pre_build:
+    commands:
+      - echo Ensuring environment is ready...
+  build:
+    commands:
+      - echo Running unit tests...
+      - npm test
+  post_build:
+    commands:
+      - echo Testing phase complete. Proceeding to artifacts packaging.
+
+artifacts:
+  files:
+    - index.js
+    - package.json
+    - node_modules/**/*
